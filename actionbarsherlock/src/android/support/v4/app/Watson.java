@@ -52,8 +52,7 @@ public abstract class Watson extends FragmentActivity implements OnCreatePanelMe
         // Dispatch calls to any child fragments
         if (f != null && f.mChildFragmentManager != null && f.mChildFragmentManager.mAdded != null)
         {
-            for (int j = 0; j < f.mChildFragmentManager.mAdded.size(); j++)
-            {
+            for (int j = 0; j < f.mChildFragmentManager.mAdded.size(); j++) {
                 Fragment f2 = f.mChildFragmentManager.mAdded.get(j);
                 show |= recurseOnCreatePanelMenu(newMenus, f2, menu, inflater);
             }
@@ -61,7 +60,7 @@ public abstract class Watson extends FragmentActivity implements OnCreatePanelMe
 
     return show;
     }
-    
+
     @Override
     public boolean onCreatePanelMenu(int featureId, Menu menu) {
         if (DEBUG) Log.d(TAG, "[onCreatePanelMenu] featureId: " + featureId + ", menu: " + menu);
@@ -109,17 +108,15 @@ public abstract class Watson extends FragmentActivity implements OnCreatePanelMe
         }
 
         // Dispatch calls to any child fragments
-        if (f != null && f.mChildFragmentManager != null && f.mChildFragmentManager.mAdded != null)
-        {
-            for (int j = 0; j < f.mChildFragmentManager.mAdded.size(); j++)
-            {
+        if (f != null && f.mChildFragmentManager != null && f.mChildFragmentManager.mAdded != null) {
+            for (int j = 0; j < f.mChildFragmentManager.mAdded.size(); j++) {
                 Fragment f2 = f.mChildFragmentManager.mAdded.get(j);
                 show = recurseOnPreparePanel(f2, menu);
             }
         }
         return show;
     }
-    
+
     @Override
     public boolean onPreparePanel(int featureId, View view, Menu menu) {
         if (DEBUG) Log.d(TAG, "[onPreparePanel] featureId: " + featureId + ", view: " + view + " menu: " + menu);
@@ -145,7 +142,7 @@ public abstract class Watson extends FragmentActivity implements OnCreatePanelMe
         }
         return false;
     }
-    
+
     private boolean recurseOnMenuItemSelected(Fragment f, MenuItem item)
     {
         if (f != null && !f.mHidden && f.mHasMenu && f.mMenuVisible && f instanceof OnOptionsItemSelectedListener) {
@@ -154,16 +151,15 @@ public abstract class Watson extends FragmentActivity implements OnCreatePanelMe
             }
         }
         // Dispatch calls to any child fragments
-        if (f != null && f.mChildFragmentManager != null && f.mChildFragmentManager.mAdded != null)
-        {
-            for (int j = 0; j < f.mChildFragmentManager.mAdded.size(); j++)
-            {
+        if (f != null && f.mChildFragmentManager != null && f.mChildFragmentManager.mAdded != null) {
+            for (int j = 0; j < f.mChildFragmentManager.mAdded.size(); j++) {
                 Fragment f2 = f.mChildFragmentManager.mAdded.get(j);
-                if (recurseOnMenuItemSelected(f2, item))
+                if (recurseOnMenuItemSelected(f2, item)) {
                     return true;
+                }
             }
         }
-        
+
         return false;
     }
 
@@ -179,8 +175,9 @@ public abstract class Watson extends FragmentActivity implements OnCreatePanelMe
             if (mFragments.mAdded != null) {
                 for (int i = 0; i < mFragments.mAdded.size(); i++) {
                     Fragment f = mFragments.mAdded.get(i);
-                    if (recurseOnMenuItemSelected(f, item))
+                    if (recurseOnMenuItemSelected(f, item)) {
                         return true;
+                    }
                 }
             }
         }
